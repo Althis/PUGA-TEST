@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 public class ShipController : Status
 {
+
     [Header("Reference")]
+    public PlayerShipTemplate shipDB;
     public GameObject shield;
     public GameObject cannon;
     public GameObject cannonLocalSpawn;
@@ -16,22 +18,21 @@ public class ShipController : Status
 
     [Header("Settings")]
     public bool inputPC;
-    public bool smoothRotateShield;
-    public float shieldSpeedToSmoothRotation;
-    public float angleToRotateShield;
-    [Range(0, 1)] public float sensibilityInput;
-    public float delayInputTimeToRotateShield;
-    public float shootForSeconds;
-    public BulletType bullet;
-    public SecondaryCannonType mySecondaryCannonType;
-    public DroneType myDroneType;
+    public bool smoothRotateShield = shipDB.smoothRotateShield;
+    public float shieldSpeedToSmoothRotation = shipDB.shieldSpeedToSmoothRotation;
+    public float angleToRotateShield = shipDB.angleToRotateShield;
+    public float sensibilityInput = shipDB.sensibilityInput;
+    public float delayInputTimeToRotateShield = shipDB.delayInputTimeToRotateShield;
+    public float shootForSeconds = shipDB.shootForSeconds;
+    public BulletType bullet = shipDB.bullet;
+    public SecondaryCannonType mySecondaryCannonType = shipDB.mySecondaryCannonType;
+    public DroneType myDroneType = shipDB.myDroneType;
     public List<ManaStatus> mana;
     [Range(1, 3)] public int manaLevel;
-    public SpecialType currentSpecialAble;
-    public float slowMotionMaxTime;
-    public float slowMotionTimeToFullRecharg;
-    [Range(0, 1)] public float slowMotionEffect;
-    public PlayerShipTemplate shipDB;
+    public SpecialType currentSpecialAble = shipDB.currentSpecialAble;
+    public float slowMotionMaxTime = shipDB.slowMotionMaxTime;
+    public float slowMotionTimeToFullRecharg = shipDB.slowMotionTimeToFullRecharg;
+    public float slowMotionEffect = shipDB.slowMotionEffect;
 
     [Header("Behaviour")]
     bool inStun;
@@ -242,7 +243,7 @@ public class ShipController : Status
 
     void SetShootRate()
     {
-        timeToShoot = 1 / shootForSeconds;
+        timeToShoot = this.shipDB.shootRate;
     }
 
 
