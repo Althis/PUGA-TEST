@@ -16,8 +16,12 @@ public class timer : MonoBehaviour
 
     void Update()
     {
-        // timeDisplay.text = "" + ((int)remainingTime/60) + ":" + ((int) remainingTime % 60);
-        timeDisplay.text = ""+remainingTime;
+        if (remainingTime <= 0){
+            FindObjectOfType<GameManager>().EndGame();
+        }else{
+            // timeDisplay.text = "" + ((int)remainingTime/60) + ":" + ((int) remainingTime % 60);
+            timeDisplay.text = ""+remainingTime;
+        }
     }
 
     IEnumerator countDown(){
