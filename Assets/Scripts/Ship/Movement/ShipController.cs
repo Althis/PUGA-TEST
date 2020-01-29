@@ -31,6 +31,7 @@ public class ShipController : Status
     public float slowMotionMaxTime;
     public float slowMotionTimeToFullRecharg;
     [Range(0, 1)] public float slowMotionEffect;
+    public PlayerShipTemplate shipDB;
 
     [Header("Behaviour")]
     bool inStun;
@@ -50,6 +51,8 @@ public class ShipController : Status
 
     void Start()
     {
+
+
         SetShootRate();
         SetDamage();
         SetCurrentSecondaryCannon(mySecondaryCannonType);
@@ -75,7 +78,7 @@ public class ShipController : Status
             }
             else
             {
-                gameObject.transform.Translate(Input.GetAxis("Horizontal") * this.allStatus[speedLevel - 1].speed * Time.deltaTime * GameManager.Instance.gameTime, 0, Input.GetAxis("Vertical") * this.allStatus[speedLevel - 1].speed * Time.deltaTime * GameManager.Instance.gameTime);
+                gameObject.transform.Translate(Input.GetAxis("Horizontal") * this.shipDB.speed * Time.deltaTime * GameManager.Instance.gameTime, 0, Input.GetAxis("Vertical") * this.shipDB.speed * Time.deltaTime * GameManager.Instance.gameTime);
 
                 if (inputPC)
                 {
@@ -124,7 +127,7 @@ public class ShipController : Status
                     RechargSlowMotion();
                 }
 
-                if (this.allStatus[healthLevel - 1].health <= 0)
+                if (this.shipDB.health <= 0)
                 {
                     EnebleMesh(false);
                     GameManager.Instance.Invoke("EndGame", 2);
@@ -136,7 +139,8 @@ public class ShipController : Status
 
     void SetDamage()
     {
-        damage = this.allStatus[attackLevel - 1].attack * 1;
+        damage = this.shipDB.attack;
+        // damage = this.allStatus[attackLevel - 1].attack * 1;
     }
 
 
