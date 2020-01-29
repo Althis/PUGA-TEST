@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RangeBehavior : EnemysBehavior
 {
+    public EnemyTemplate enemyDB;
     [SerializeField]
     float minDistanceToFireAttack, maxDistanceToFireAttack, currentDistance;
     [SerializeField]
@@ -11,7 +12,7 @@ public class RangeBehavior : EnemysBehavior
 
     void Start()
     {
-        StartStatus();
+        StartStatus(enemyDB);
         CalculateFireRate();
         agent.stoppingDistance = (minDistanceToFireAttack + maxDistanceToFireAttack) / 2; 
         shipTransform = GameObject.Find("AllShip").transform;

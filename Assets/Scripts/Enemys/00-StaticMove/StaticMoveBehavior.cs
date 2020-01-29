@@ -11,6 +11,8 @@ public class StaticMoveBehavior : Status
 
     public GameObject rechargManaDrop;
 
+    public EnemyTemplate enemyDB;
+
     public int myMoneyToDrop;
     public float MaxDistanceToDrop;
 

@@ -10,6 +10,8 @@ public class MeleeBehavior : EnemysBehavior
     [SerializeField]
     GameObject attackView;
 
+    public EnemyTemplate enemyDB;
+
     [SerializeField]
     float rushSpeed,rushDistance, rushDelay, rushTime, rushIncrementSpeed;
     float currentRushDelay,currentRushTime, normalIncrementSpeed;
@@ -18,7 +20,7 @@ public class MeleeBehavior : EnemysBehavior
 
     void Start()
     {
-        StartStatus();
+        StartStatus(enemyDB);
         shipTransform = GameObject.Find("AllShip").transform;
         agent.stoppingDistance = distanceToAttack - 0.2f;
         currentRushDelay = rushDelay;

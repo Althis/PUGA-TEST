@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MeleeStunBehavior : EnemysBehavior {
-
+    public EnemyTemplate enemyDB;
 
     [SerializeField]
     float distanceToAttack, maxAttackDistance;
@@ -13,7 +13,7 @@ public class MeleeStunBehavior : EnemysBehavior {
 
     void Start()
     {
-        StartStatus();
+        StartStatus(enemyDB);
         shipTransform = GameObject.Find("AllShip").transform;
         agent.stoppingDistance = distanceToAttack - 0.2f;
     }

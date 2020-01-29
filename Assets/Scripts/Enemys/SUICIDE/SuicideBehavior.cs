@@ -3,9 +3,10 @@ using System.Collections;
 
 public class SuicideBehavior : EnemysBehavior
 {
+    public EnemyTemplate enemyDB;
     void Start()
     {
-        StartStatus();
+        StartStatus(enemyDB);
 
         shipTransform = GameObject.Find("AllShip").transform;
     }

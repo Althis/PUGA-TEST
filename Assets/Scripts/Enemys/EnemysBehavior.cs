@@ -23,7 +23,7 @@ public class EnemysBehavior : MonoBehaviour
     protected bool walk, fire, rechargFire, meleeAttack, rangeAttack, suicide, playerToTarget, shield, rechargShield, stun;
 
 
-    protected void StartStatus()
+    protected void StartStatus(EnemyTemplate enemyDB)
     {
         level = Mathf.Clamp(level, 1, status.Count);
         currentLife = status[level - 1].life;
@@ -47,15 +47,18 @@ public class EnemysBehavior : MonoBehaviour
                 rechargShield = false;
                 stun = false;
 
-                status[level - 1].fireRate = 0;
-                status[level - 1].fireDamage = 0;
-                status[level - 1].fireRechargTime = 0;
-                status[level - 1].bulletsToRecharg = 0;
-                status[level - 1].meleeAttackTime = 0;
-                status[level - 1].meleeAttackDelay = 0;
-                status[level - 1].shieldResistence = 0;
-                status[level - 1].shieldRechargTime = 0;
-                status[level - 1].stunTime = 0;
+                status[level - 1].life = enemyDB.life;
+                status[level - 1].movimentSpeed = enemyDB.movimentSpeed;
+                status[level - 1].fireRate = enemyDB.fireRate;
+                status[level - 1].fireDamage = enemyDB.fireDamage;
+                status[level - 1].fireRechargTime = enemyDB.fireRechargTime;
+                status[level - 1].bulletsToRecharg = enemyDB.bulletsToRecharg;
+                status[level - 1].meleeDamage = enemyDB.meleeDamage;
+                status[level - 1].meleeAttackTime = enemyDB.meleeAttackTime;
+                status[level - 1].meleeAttackDelay = enemyDB.meleeAttackDelay;
+                status[level - 1].shieldResistence = enemyDB.shieldResistence;
+                status[level - 1].shieldRechargTime = enemyDB.shieldRechargTime;
+                status[level - 1].stunTime = enemyDB.stunTime;
 
                 break;
             case EnemysType.RANGE:

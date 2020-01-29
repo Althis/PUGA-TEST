@@ -4,7 +4,7 @@ using System.Collections;
 public class MeleeRangerBehavior : EnemysBehavior {
 
     bool inAttack;
-
+    public EnemyTemplate enemyDB;
     [SerializeField]
     float distanceToAttack, maxAttackDistance;
     [SerializeField]
@@ -14,7 +14,7 @@ public class MeleeRangerBehavior : EnemysBehavior {
 
     void Start()
     {
-        StartStatus();
+        StartStatus(enemyDB);
         shipTransform = GameObject.Find("AllShip").transform;
         agent.stoppingDistance = distanceToAttack - 0.2f;
     }

@@ -3,11 +3,12 @@ using System.Collections;
 
 public class MelleRushBehavior : EnemysBehavior
 {
+    public EnemyTemplate enemyDB;
 
     [SerializeField]
     int maxTargets;
 
-
+    
     [SerializeField]
     float rushSpeed, rushDistance, rushIncrementSpeed;
     float  normalIncrementSpeed;
@@ -17,7 +18,7 @@ public class MelleRushBehavior : EnemysBehavior
 
     void Start()
     {
-        StartStatus();
+        StartStatus(enemyDB);
         shipTransform = GameObject.Find("AllShip").transform;
 
         normalIncrementSpeed = agent.acceleration;

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TowerRangeBehavior : EnemysBehavior
 {
-
+    public EnemyTemplate enemyDB;
     [SerializeField]
     GameObject bullet;
 
@@ -14,7 +14,7 @@ public class TowerRangeBehavior : EnemysBehavior
 
     void Start()
     {
-        StartStatus();
+        StartStatus(enemyDB);
         CalculateFireRate();
         shipTransform = GameObject.Find("AllShip").transform;
 

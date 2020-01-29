@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        new WaitForSeconds(1000);
         SceneManager.LoadScene("Game Over");
         endGame = true;
         SpawnManager.Instance.spawnAble = false;

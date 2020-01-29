@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TowerFireBehavior : EnemysBehavior
 {
+    public EnemyTemplate enemyDB;
     [SerializeField]
     float rotateSpeed, fireActiveTime;
     float currentFireActiveTime;
@@ -13,7 +14,7 @@ public class TowerFireBehavior : EnemysBehavior
 
     void Start()
     {
-        StartStatus();
+        StartStatus(enemyDB);
         shipTransform = GameObject.Find("AllShip").transform;
         myFire.damage = status[level - 1].fireDamage;
     }

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class TowerRocketBehavior : EnemysBehavior {
-
+    public EnemyTemplate enemyDB;
     [SerializeField]
     GameObject bullet;
 
@@ -12,7 +12,7 @@ public class TowerRocketBehavior : EnemysBehavior {
 
 	void Start () {
 
-        StartStatus();
+        StartStatus(enemyDB);
         CalculateFireRate();
         shipTransform = GameObject.Find("AllShip").transform;
 
